@@ -9,7 +9,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && echo "Asia/Shanghai" > /etc/timezone \
     && dpkg-reconfigure -f noninteractive tzdata
-
+    
 RUN apt-get update \
     && apt-get install ant --no-install-recommends -y \
     && apt-get clean all \

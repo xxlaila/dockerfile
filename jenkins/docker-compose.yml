@@ -1,7 +1,7 @@
 version: '3.4'
 services:
     jenkins:
-        image: daocloud.io/buxiaomo/jenkins:2.121.1
+        image: daocloud.io/buxiaomo/jenkins:2.121.3
         ports:
             - 10000:8080/tcp
         environment:
@@ -21,7 +21,7 @@ services:
                 delay: 10s
             placement:
                 constraints:
-                    - node.labels.jenkins == 
+                    - node.labels.jenkins == true
         logging:
             driver: json-file
             options:
