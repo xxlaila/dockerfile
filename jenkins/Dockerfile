@@ -43,4 +43,5 @@ ENV JENKINS_HOME /var/jenkins
 EXPOSE 8080
 VOLUME /var/jenkins
 
-CMD ["java","-Dhudson.util.ProcessTree.disable=true","-jar","/usr/share/jenkins/jenkins.war"]
+COPY docker-entrypoint.sh /usr/local/bin/
+CMD ["docker-entrypoint.sh"]
