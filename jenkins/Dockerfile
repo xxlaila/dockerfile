@@ -37,8 +37,12 @@ RUN apt-get update \
     && wget -O /usr/share/jenkins/jenkins.war https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/${Jenkins_Version}/jenkins.war \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
-
 ENV JENKINS_HOME /var/jenkins
+
+RUN apt-get update \
+    && apt-get --no-install-recommends -y install apache2-utils \
+    && apt-get clean all \
+    && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 8080
 VOLUME /var/jenkins
