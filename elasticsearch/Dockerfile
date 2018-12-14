@@ -3,7 +3,7 @@ MAINTAINER "Xiao Mo" <root@xiaomo.red>
 
 ENV VERSION 6.2.4
 RUN apt-get update \
-    && apt-get install wget -y \
+    && apt-get install wget curl -y \
     && wget http://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${VERSION}.tar.gz -O /usr/local/src/elasticsearch-${VERSION}.tar.gz \
     && tar -zvxf /usr/local/src/elasticsearch-${VERSION}.tar.gz -C /usr/local/ \
     && mv /usr/local/elasticsearch-${VERSION} /usr/local/elasticsearch \
