@@ -5,4 +5,4 @@ if [ $PASSWORD = "**NULL**" ];then
     echo "docker run -d --name sslocal -P -e PASSWORD=123456..."
     exit 1
 fi
-sslocal -s ${SERVER_ADDR} -p ${SERVER_PORT} -k ${PASSWORD}  -m ${SERVER_METHOD} -b ${LOCAL_ADDR} --fast-open
+exec sslocal -s ${SERVER_ADDR} -p ${SERVER_PORT} -k ${PASSWORD}  -m ${SERVER_METHOD} -b ${LOCAL_ADDR} --fast-open
