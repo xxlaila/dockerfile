@@ -19,6 +19,7 @@ RUN /usr/local/bin/install-plugins.sh simple-theme-plugin
 # Scaling
 RUN /usr/local/bin/install-plugins.sh kubernetes
 
+USER root
 # Docker
 ENV DOCKER_CHANNEL stable
 ENV DOCKER_VERSION 18.06.1-ce
@@ -33,3 +34,5 @@ RUN wget https://storage.googleapis.com/kubernetes-release/release/${KUBE_VERSIO
         --strip-components=3 -C /usr/local/bin \
         kubernetes/server/bin/kubectl \
     && rm -rf /usr/local/src/kubernetes-server-linux-amd64.tar.gz
+
+USER jenkins
