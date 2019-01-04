@@ -1,51 +1,35 @@
-FROM openjdk:8u151-jdk
+FROM jenkins/jenkins:2.150.1
 MAINTAINER "Xiao Mo" <root@xiaomo.red>
 
-COPY sources.list /etc/apt/sources.list
+# Distributed Builds plugins
+RUN /usr/local/bin/install-plugins.sh ssh-slaves
 
-RUN apt-get update \
-    && apt-get install tzdata --no-install-recommends -y \
-    && apt-get clean all \
-    && rm -rf /var/lib/apt/lists/* \
-    && echo "Asia/Shanghai" > /etc/timezone \
-    && dpkg-reconfigure -f noninteractive tzdata
-    
-RUN apt-get update \
-    && apt-get install ant --no-install-recommends -y \
-    && apt-get clean all \
-    && rm -rf /var/lib/apt/lists/*
-ENV ANT_HOME /usr/share/ant
-ENV PATH $PATH:$ANT_HOME/bin
+# install Notifications and Publishing plugins
+RUN /usr/local/bin/install-plugins.sh email-ext
+RUN /usr/local/bin/install-plugins.sh mailer
+RUN /usr/local/bin/install-plugins.sh slack
 
-RUN apt-get update \
-    && apt-get install maven --no-install-recommends -y \
-    && apt-get clean all \
-    && rm -rf /var/lib/apt/lists/*
-ENV MAVEN_HOME /usr/share/maven/
-ENV PATH $PATH:$MAVEN_HOME/bin
+# Artifacts
+RUN /usr/local/bin/install-plugins.sh htmlpublisher
 
+# UI
+RUN /usr/local/bin/install-plugins.sh greenballs
+RUN /usr/local/bin/install-plugins.sh simple-theme-plugin
+
+# Scaling
+RUN /usr/local/bin/install-plugins.sh kubernetes
+
+# Docker
 ENV DOCKER_CHANNEL stable
 ENV DOCKER_VERSION 18.06.1-ce
 RUN wget -O /usr/local/src/docker.tgz "https://mirrors.tuna.tsinghua.edu.cn/docker-ce/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" \
     && tar --strip-components=1 -xvzf /usr/local/src/docker.tgz -C /usr/local/bin \
     && rm -rf /usr/local/src/docker.tgz
 
-ENV Jenkins_Version 2.150.1
-RUN apt-get update \
-    && apt-get install git wget --no-install-recommends -y \
-    && mkdir -p /usr/share/jenkins /var/jenkins \
-    && wget -O /usr/share/jenkins/jenkins.war https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/${Jenkins_Version}/jenkins.war \
-    && apt-get clean all \
-    && rm -rf /var/lib/apt/lists/*
-ENV JENKINS_HOME /var/jenkins
-
-RUN apt-get update \
-    && apt-get --no-install-recommends -y install apache2-utils \
-    && apt-get clean all \
-    && rm -rf /var/lib/apt/lists/*
-
-EXPOSE 8080
-VOLUME /var/jenkins
-
-COPY docker-entrypoint.sh /usr/local/bin/
-CMD ["docker-entrypoint.sh"]
+# 下载Kubernetes二进制文件
+ENV KUBE_VERSION=v1.13.0
+RUN wget https://storage.googleapis.com/kubernetes-release/release/${KUBE_VERSION}/kubernetes-server-linux-amd64.tar.gz -O /usr/local/src/kubernetes-server-linux-amd64.tar.gz \
+    && tar -zxvf /usr/local/src/kubernetes-server-linux-amd64.tar.gz  \
+        --strip-components=3 -C /usr/local/bin \
+        kubernetes/server/bin/kubectl \
+    && rm -rf /usr/local/src/kubernetes-server-linux-amd64.tar.gz
