@@ -19,10 +19,8 @@ RUN /usr/local/bin/install-plugins.sh simple-theme-plugin
 # Scaling
 RUN /usr/local/bin/install-plugins.sh kubernetes
 
-
-RUN /usr/local/bin/install-plugins.sh matrix-auth
-
-RUN /usr/local/bin/install-plugins.sh antisamy-markup-formatter
+COPY plugins.txt /tmp/
+RUN /usr/local/bin/install-plugins.sh $(cat /tmp/plugins.txt | tr '\n' ' ')
 
 USER root
 # Docker
