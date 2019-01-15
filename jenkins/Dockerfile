@@ -1,27 +1,6 @@
 FROM jenkins/jenkins:2.150.1
 MAINTAINER "Xiao Mo" <root@xiaomo.site>
 
-# Distributed Builds plugins
-RUN /usr/local/bin/install-plugins.sh ssh-slaves
-
-# install Notifications and Publishing plugins
-RUN /usr/local/bin/install-plugins.sh email-ext
-RUN /usr/local/bin/install-plugins.sh mailer
-RUN /usr/local/bin/install-plugins.sh slack
-
-# Artifacts
-RUN /usr/local/bin/install-plugins.sh htmlpublisher
-
-# UI
-RUN /usr/local/bin/install-plugins.sh greenballs
-RUN /usr/local/bin/install-plugins.sh simple-theme-plugin
-
-# Scaling
-RUN /usr/local/bin/install-plugins.sh kubernetes
-
-COPY plugins.txt /tmp/
-RUN /usr/local/bin/install-plugins.sh $(cat /tmp/plugins.txt | tr '\n' ' ')
-
 USER root
 # Docker
 ENV DOCKER_CHANNEL stable
@@ -39,3 +18,6 @@ RUN wget https://storage.googleapis.com/kubernetes-release/release/${KUBE_VERSIO
     && rm -rf /usr/local/src/kubernetes-server-linux-amd64.tar.gz
 
 USER jenkins
+
+COPY plugins.txt /tmp/
+RUN /usr/local/bin/install-plugins.sh $(cat /tmp/plugins.txt | tr '\n' ' ')
