@@ -1,5 +1,5 @@
 FROM jenkins/jenkins:2.150.1
-MAINTAINER "Xiao Mo" <root@xiaomo.red>
+MAINTAINER "Xiao Mo" <root@xiaomo.site>
 
 # Distributed Builds plugins
 RUN /usr/local/bin/install-plugins.sh ssh-slaves
