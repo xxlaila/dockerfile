@@ -19,6 +19,11 @@ RUN /usr/local/bin/install-plugins.sh simple-theme-plugin
 # Scaling
 RUN /usr/local/bin/install-plugins.sh kubernetes
 
+
+RUN /usr/local/bin/install-plugins.sh matrix-auth
+
+RUN /usr/local/bin/install-plugins.sh antisamy-markup-formatter
+
 USER root
 # Docker
 ENV DOCKER_CHANNEL stable
