@@ -20,7 +20,7 @@ RUN /usr/local/bin/install-plugins.sh simple-theme-plugin
 RUN /usr/local/bin/install-plugins.sh kubernetes
 
 COPY plugins.txt /tmp/
-# RUN /usr/local/bin/install-plugins.sh $(cat /tmp/plugins.txt | tr '\n' ' ')
+RUN /usr/local/bin/install-plugins.sh $(cat /tmp/plugins.txt | tr '\n' ' ')
 
 USER root
 # Docker
