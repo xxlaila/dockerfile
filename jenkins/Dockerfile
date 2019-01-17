@@ -40,7 +40,7 @@ RUN wget https://services.gradle.org/distributions/gradle-${GRABLE_VERSION}-bin.
 ENV GRADLE_HOME=/usr/local/gradle
 ENV PATH=$GRADLE_HOME/bin:$PATH
 
-USER jenkins
+# USER jenkins:docker
 
 COPY plugins.txt /tmp/
 RUN /usr/local/bin/install-plugins.sh $(cat /tmp/plugins.txt | tr '\n' ' ')
