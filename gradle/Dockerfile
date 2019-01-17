@@ -1,7 +1,8 @@
 FROM daocloud.io/buxiaomo/oracle-jdk:8u181
 
 ENV GRABLE_VERSION=4.10.2
-RUN wget https://services.gradle.org/distributions/gradle-${GRABLE_VERSION}-bin.zip -O /usr/local/src/gradle-${GRABLE_VERSION}-bin.zip \
+RUN apt-get update && apt-get install wget -y \
+    && wget https://services.gradle.org/distributions/gradle-${GRABLE_VERSION}-bin.zip -O /usr/local/src/gradle-${GRABLE_VERSION}-bin.zip \
     && cd /usr/local/src/ && unzip gradle-${GRABLE_VERSION}-bin.zip \
     && mv /usr/local/src/gradle-4.10.2 /usr/local/gradle \
     && rm -rf /usr/local/src/gradle-${GRABLE_VERSION}-bin.zip
