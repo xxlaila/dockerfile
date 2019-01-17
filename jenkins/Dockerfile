@@ -54,8 +54,8 @@ RUN wget https://repo1.maven.org/maven2/org/sonarsource/scanner/cli/sonar-scanne
     && cd /usr/local/src/ && unzip sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip \
     && mv /usr/local/src/sonar-scanner-${SONAR_SCANNER_VERSION} /usr/local/sonar-scanner-cli \
     && rm -rf /usr/local/src/sonar-scanner-cli-${SONAR_SCANNER_VERSION}.zip
-ENV SONAR_SCANNER_HOME=/usr/local/sonar-scanner-cli
-ENV PATH=$GRADLE_HOME/bin:$PATH
+ENV SONAR_RUNNER_HOME=/usr/local/sonar-scanner-cli
+ENV PATH=$SONAR_RUNNER_HOME/bin:$PATH
 # ./build/libs/jenkin/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarQube_Runner/bin/sonar-scanner -Dsonar.host.url=http://150.109.69.179:9000
 # USER jenkins:docker
 
