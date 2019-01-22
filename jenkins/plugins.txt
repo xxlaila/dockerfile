@@ -78,4 +78,6 @@ workflow-aggregator
 pipeline-github-lib
 mapdb-api
 subversion
-sonar
+gitlab-plugin
+gitlab-oauth
+gitlab-hook
