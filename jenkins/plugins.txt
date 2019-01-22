@@ -81,3 +81,4 @@ subversion
 gitlab-plugin
 gitlab-oauth
 gitlab-hook
+sonar
