@@ -82,5 +82,5 @@ gitlab-plugin
 gitlab-oauth
 gitlab-hook
 sonar
-pipeline-aggregator-view
 nexus-artifact-uploader
+build-monitor-plugin
