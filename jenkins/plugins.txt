@@ -49,8 +49,6 @@ apache-httpcomponents-client-4-api
 cloudbees-folder
 durable-task
 jackson2-api
-kubernetes-credentials
-kubernetes
 variant
 simple-theme-plugin
 greenballs
@@ -82,5 +80,6 @@ gitlab-plugin
 gitlab-oauth
 gitlab-hook
 sonar
-nexus-artifact-uploader
 build-monitor-plugin
+build-view-column
+jacoco
