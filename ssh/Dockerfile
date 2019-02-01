@@ -1,8 +1,6 @@
 FROM openjdk:8-jdk
 MAINTAINER Xiao Mo
 
-COPY sources.list /etc/apt/sources.list
-
 RUN apt-get update \
     && apt-get install -y openssh-server \
     && mkdir /var/run/sshd \
