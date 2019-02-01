@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM openjdk:8-jdk
 MAINTAINER Xiao Mo
 
 COPY sources.list /etc/apt/sources.list
