@@ -14,4 +14,6 @@ ENV ROOT_PASSWORD=root
 
 EXPOSE 22
 
+VOLUME [ "/var/jenkins_home" ]
+
 CMD ["docker-entrypoint.sh"]
