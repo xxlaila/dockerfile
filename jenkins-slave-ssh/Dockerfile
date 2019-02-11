@@ -1,7 +1,7 @@
 FROM openjdk:8-jdk
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends openssh-server \
+    && apt-get install -y --no-install-recommends netcat openssh-server \
     && mkdir /var/run/sshd \
     && sed -ri 's/#PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config \
     && sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config \
