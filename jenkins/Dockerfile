@@ -41,6 +41,8 @@ RUN apt-get update \
 ENV MAVEN_HOME /usr/share/maven/
 ENV PATH $PATH:$MAVEN_HOME/bin
 
+COPY settings.xml /etc/maven/settings.xml
+
 # gradle
 ENV GRABLE_VERSION=4.10.2
 RUN wget https://services.gradle.org/distributions/gradle-${GRABLE_VERSION}-bin.zip -O /usr/local/src/gradle-${GRABLE_VERSION}-bin.zip \
