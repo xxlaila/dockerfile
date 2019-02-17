@@ -1,7 +1,7 @@
-FROM jenkins/jenkins:2.150.2
+FROM jenkins/jenkins:2.150.3
 MAINTAINER "Xiao Mo" <root@xiaomo.site>
 
-# COPY sources.list /etc/apt/sources.list
+COPY sources.list /etc/apt/sources.list
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV JRE_HOME $JAVA_HOME/jre
