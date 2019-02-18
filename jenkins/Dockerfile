@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.150.3
+FROM jenkins/jenkins:2.150.2
 MAINTAINER "Xiao Mo" <root@xiaomo.site>
 
 COPY sources.list /etc/apt/sources.list
