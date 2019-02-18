@@ -1,8 +1,6 @@
 FROM jenkins/jenkins:2.150.2
 MAINTAINER "Xiao Mo" <root@xiaomo.site>
 
-COPY sources.list /etc/apt/sources.list
-
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV JRE_HOME $JAVA_HOME/jre
 ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
