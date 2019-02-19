@@ -108,3 +108,6 @@ blueocean-config
 blueocean
 blueocean-pipeline-editor
 blueocean-autofavorite
+pipeline-utility-steps
+windows-slaves
+build-monitor-plugin
