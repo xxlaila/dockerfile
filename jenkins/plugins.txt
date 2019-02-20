@@ -110,3 +110,4 @@ blueocean-pipeline-editor
 blueocean-autofavorite
 pipeline-utility-steps
 windows-slaves
+ssh-steps
