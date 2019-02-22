@@ -59,7 +59,7 @@ ENV PATH=$SONAR_RUNNER_HOME/bin:$PATH
 
 # Nodejs
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get install -y make nodejs \
     && apt-get purge apt-transport-https lsb-release -y \
     && apt-get -y autoremove -y \
     && apt-get clean all \
