@@ -63,7 +63,7 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
     && apt-get purge apt-transport-https lsb-release -y \
     && apt-get -y autoremove -y \
     && apt-get clean all \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/nodesource.list
 
 # Build Tools
 RUN apt-get update \
