@@ -56,6 +56,12 @@ RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
 
+# Build Tools
+RUN apt-get update \
+    && apt install -y build-essential libpng-dev make \
+    && apt-get clean all \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 ENV ROOT_PASSWORD=root

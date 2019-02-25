@@ -59,9 +59,15 @@ ENV PATH=$SONAR_RUNNER_HOME/bin:$PATH
 
 # Nodejs
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
-    && apt-get install -y libpng-dev make nodejs \
+    && apt-get install -y nodejs \
     && apt-get purge apt-transport-https lsb-release -y \
     && apt-get -y autoremove -y \
+    && apt-get clean all \
+    && rm -rf /var/lib/apt/lists/*
+
+# Build Tools
+RUN apt-get update \
+    && apt install -y build-essential libpng-dev make \
     && apt-get clean all \
     && rm -rf /var/lib/apt/lists/*
 
